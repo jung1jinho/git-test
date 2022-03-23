@@ -1,2 +1,2 @@
-print('helleword')
-print'hello word'
+print'helloword'
+print("hellowrd")
