@@ -1,0 +1,2 @@
+awk –F’:’ –v “min=100” –v “max=60000” 
+‘{ if($3 >= min && $3 <= max) print $1}’ /etc/passwd
