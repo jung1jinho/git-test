@@ -16,7 +16,7 @@ def remove_num(string):
 
 def history(account):
     ret= exec_cmd("sudo -H -u %s bash -i -c 'history -r; history'" % account)
-    print(ret)
+    # print(ret)
     ret_split = ret.strip().split("\n")
     
     # print(ret_split)
