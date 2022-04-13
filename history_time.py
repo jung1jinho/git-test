@@ -28,7 +28,7 @@ if __name__ == "__main__":
     end_date = date + datetime.timedelta(hours=1)       # 입력 시각 1시간 후
 
     print(start_date, "~", end_date, "동안 입력된 명령어")
-    print("-" * 70)
+    print("-" * 70) #()
 
     accounts = get_accounts()
     for account in accounts :
