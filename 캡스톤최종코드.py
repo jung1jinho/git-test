@@ -7,7 +7,8 @@ import pandas as pd
 
 driver = webdriver.Chrome()
 
-driver.get("https://new.land.naver.com/complexes?ms=37.4478852,127.1434156,15")
+driver.get("https://new.land.naver.com/complexes?ms=37.4443103,127.1676532,16")
+
 
 headers = {
         "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NDk5NDc4OTYsImV4cCI6MTY0OTk1ODY5Nn0.IHj3PTF0ebjIftDUkUrUnbb4ntzIeqc14Ioouz7CbhE",
@@ -18,6 +19,7 @@ headers = {
         "Sec-Fetch-Site": "same-origin",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36"
     }
+
 a_tags = driver.find_elements(By.CSS_SELECTOR, 'a.marker_complex--apart')
 print(len(a_tags))
 complex_ids = []
@@ -35,7 +37,7 @@ for complex_id in complex_ids:
         complex_detail_df = pd.Series(data_dict['complexDetail']).to_frame().T
         complex_detail_list_df = pd.DataFrame(data_dict['complexPyeongDetailList'])
 
-        # nexted 코드처리
+        # nexted 
         if "landPriceMaxByPtp" in complex_detail_list_df.columns:
             convert = complex_detail_list_df['landPriceMaxByPtp'].values.tolist()
             nested_df1 = pd.DataFrame([v for v in convert if pd.notna(v)])
