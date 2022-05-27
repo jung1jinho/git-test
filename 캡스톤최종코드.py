@@ -35,7 +35,7 @@ for complex_id in complex_ids:
                            headers=headers)
         data_dict = res.json()
         complex_detail_df = pd.Series(data_dict['complexDetail']).to_frame().T
-        complex_detail_list_df = pd.DataFrame(data_dict['complexPyeongDetailList'])
+        complex_detail_list_df = pd.DataFrame(data_dict['complexPyeongDetailList']) #complexdetail 정보 딕셔너리형태로 보여준다 
 
         # nexted 
         if "landPriceMaxByPtp" in complex_detail_list_df.columns:
@@ -76,7 +76,7 @@ final_complex_detail_df = pd.concat(final_complex_detail_df_list)
 final_complex_detail_df[['pyeongNo', 'complexNo']] = final_complex_detail_df[['pyeongNo', 'complexNo']].astype(int)
 
 series_list = []
-for _, row in final_complex_detail_df.iterrows():
+for _, row in final_complex_detail_df.iterrows(): #컬럼 인덱스를 보기쉽게 출력해봄
         complex_num = row['complexNo']
         area_num = row['pyeongNo']
 
@@ -87,7 +87,7 @@ for _, row in final_complex_detail_df.iterrows():
         data_dict = res.json()
 
         try:
-            series = pd.DataFrame(data_dict['marketPrices']).iloc[0]
+            series = pd.DataFrame(data_dict['marketPrices']).iloc[0] #가격 데이터값 정의 매매시세(실거래x)
             series['complexNo'] = complex_num
             series['pyeongNo'] = area_num
             series_list.append(series)
